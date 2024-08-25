@@ -11,8 +11,6 @@ package AbstractClasses;
     abstract void admit();
     abstract void appointment();
 
-
-
 }
 
 class MyHospital extends Hospital{
