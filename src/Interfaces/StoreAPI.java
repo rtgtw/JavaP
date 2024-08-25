@@ -9,6 +9,10 @@ package Interfaces;
 
 interface Member{
     void callback(String notification);
+
+    static void method1(){
+        System.out.println("Hello World");
+    }
 }
 
 //Create the store class
@@ -79,5 +83,8 @@ public class StoreAPI {
         s1.register(c3);
 
         s1.saleNotification("COUCH FOR SALE! STOP BY THE STORE!");
+
+
+
     }
 }
