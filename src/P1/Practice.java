@@ -1,4 +1,4 @@
-package Bari;
+package P1;
 
 public class Practice {
 
