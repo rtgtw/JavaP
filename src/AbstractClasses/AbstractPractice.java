@@ -25,6 +25,7 @@ class Sub extends Super{
     }
 
     //Overriding method 1 from parent class
+    @Override
     void method1(){
         System.out.println("Method 1 from sub class");
     }
@@ -41,7 +42,7 @@ class Sub extends Super{
 
 
 
-class Main{
+public class AbstractPractice{
 
     public static void main(String args[]){
 
