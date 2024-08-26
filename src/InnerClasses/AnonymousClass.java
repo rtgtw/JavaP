@@ -36,5 +36,14 @@ public class AnonymousClass {
     public static void main(String args[]){
         Animal.i.display();
         Animal.a.cook();
+
+        Abstract1 ab1 = new Abstract1(){
+            public void cook(){
+                System.out.println("Anonymous class to cook");
+            }
+        };
+
+
+
     }
 }
