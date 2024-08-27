@@ -26,7 +26,7 @@ import java.awt.event.ActionListener;
 public class EmailValidatorUI{
 
     //Declare reference from backend class SwitchValidEmail
-    private final SwitchValidEmail validator;
+     private final SwitchValidEmail validator;
 
 
     //Create a constructor for EmailValidator UI which will essentially

@@ -29,7 +29,7 @@ public class ReadingAFileException {
         System.out.println("Global Variables RESET!");
     }
 
-    static void method1(String filename, int stringNumber) throws Exception {
+    public static void method1(String filename, int stringNumber) throws Exception {
 
         //Start of method timing
         long startOfMethodTime = System.nanoTime();
@@ -49,9 +49,9 @@ public class ReadingAFileException {
 
         //try with resource try/catch
         //This is beneficial b/c you dont need to write a finally block in order to delete resources
-        try( FileInputStream fi = new FileInputStream("C:\\Users\\nonono\\OneDrive\\Desktop\\prompt.txt");
+        try( FileInputStream fi = new FileInputStream("C:\\Users\\remio\\OneDrive\\Desktop\\prompt.txt");
              Scanner sc = new Scanner(fi);
-             PrintWriter pw = new PrintWriter(new FileWriter("C:\\Users\\nonono\\OneDrive\\Desktop\\" + filename + ".txt"))) {
+             PrintWriter pw = new PrintWriter(new FileWriter("C:\\Users\\remio\\OneDrive\\Desktop\\" + filename + ".txt"))) {
 
              //End of read time (could use this for start of write time, but will create startWrite b/c reps
             long endOfReadTime = System.nanoTime();
