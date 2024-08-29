@@ -1,6 +1,8 @@
 package HcmHdl;
 //Iteration 1, pass in attributes / data, output a file
+//Iteration 2, convert .dat file into .zip file
 import java.io.*;
+import java.util.zip.*;
 
 
 public class OutputFile {
@@ -9,11 +11,12 @@ public class OutputFile {
     //we need to pass in business object name, array hold attributes, 2D array holding each line of data
     public void createDatFile(String businessObjectName, String attributes[], String[][]data){
         //filename + filepath, filename is businessobject name
-        String filename = "C:\\Users\\\\OneDrive\\Desktop\\" + businessObjectName + ".dat";
+        String filename = businessObjectName + ".dat";
+        String filepath = "C:\\Users\\\\OneDrive\\Desktop\\" + filename ;
 
         //try w/ resources try/catch block, don't have to specify closing resources, done automatically
         //Create a buffer writer object and pass in filewriter anonymous object, and pass in the filename to write to it
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filename))){
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(filepath))){
             //now we can start crafting the .dat file
             //start off by creating the header
             writer.write("METADATA|" + businessObjectName);
@@ -41,7 +44,53 @@ public class OutputFile {
         }
 
         System.out.println("File " + filename + " has been created");
+
+
+        this.zipDatFile(filename,filepath);
     }
+
+
+    public void zipDatFile(String datFilename, String datFilepath){
+        //replace .dat with .zip
+        String zipFilename = datFilename.replace(".dat",".zip");
+        String zipFilepath = "C:\\Users\\\\OneDrive\\Desktop\\" + zipFilename;
+
+        try(
+                FileInputStream fis = new FileInputStream(datFilepath);
+                FileOutputStream fos = new FileOutputStream(zipFilepath);
+                ZipOutputStream zos = new ZipOutputStream(fos);
+                ){
+
+            //Create a zipEntry with the datFile
+            ZipEntry zipentry = new ZipEntry(datFilename);
+            zos.putNextEntry(zipentry);
+
+
+            //Create reading buffer
+            byte[] buffer = new byte[1024];
+            int length;
+
+            //Read the dat file and write it to the zip
+            while((length = fis.read(buffer)) > 0){
+                zos.write(buffer,0,length);
+            }
+
+            //close the zipentry (dat file)
+            zos.closeEntry();
+            System.out.println("File " + zipFilename + " was created");
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+
+
+
+
+
+
+
 
 
     public static void main(String args[]){
